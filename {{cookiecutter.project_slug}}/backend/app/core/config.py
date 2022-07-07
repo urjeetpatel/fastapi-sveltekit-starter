@@ -17,8 +17,12 @@ class Settings(BaseSettings):
     @validator("ASYNC_DATABASE_URL")
     def build_async_connection_string(cls, v: Optional[str], values: Dict[str, Any]):
         """Builds ASYNC_DATABASE_URL from DATABASE_URL."""
-        db = values["DATABASE_URL"]
+        db = values.get("DATABASE_URL")
         return db.replace("postgresql", "postgresql+asyncpg") if db else v
+
+    class Config:
+        env_file = ".env"
+        env_file_encoding = "utf-8"
 
 
 settings = Settings()
