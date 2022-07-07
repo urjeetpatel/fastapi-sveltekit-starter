@@ -1,0 +1,6 @@
+{
+    "project_name": "Sample project",
+    "project_slug": "sample-project",
+    "version": "0.1.0",
+    "backend_port": "8080"
+}
